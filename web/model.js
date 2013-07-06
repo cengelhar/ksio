@@ -1,7 +1,37 @@
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema,
+	ObjectId = Schema.ObjectId;
 
+var CustomerSchema = new Schema({
+	name			: string,
+	contact			: {
+		first		: string,
+		last		: string,
+		email		: string,
+		phone		: string
+	},
+	programs		: [{
+		name		: string,
+		date		: timestamp,
+		time		: string,
+		recurs		: {type: string, enum: ['daily', 'weekdays', 'week', 'month' 'annual']}
+		recurCount	: int,
+		rooms		: [{
+			name		: string,
+			number		: string,
+			age			: string,
+			grade		: string,
+			latitude	: string,
+			longitude	: string  
+		}]
+	}],
+	printers		: [{
+		name		: string,
+		ipAddress	: string,
+		latitude	: string,
+		longitude	: string
+	}]
+});
 /*
 var RiderSchema = new Schema({
 	name: {
