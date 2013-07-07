@@ -18,11 +18,13 @@ var CustomerSchema = new Schema({
 		recurCount	: int,
 		rooms		: [{
 			name		: string,
+			location	: string,
 			number		: string,
 			age			: string,
 			grade		: string,
+			labels		: int,
 			latitude	: string,
-			longitude	: string  
+			longitude	: string
 		}]
 	}],
 	printers		: [{
@@ -30,6 +32,30 @@ var CustomerSchema = new Schema({
 		ipAddress	: string,
 		latitude	: string,
 		longitude	: string
+	}]
+});
+var FamilySetSchema = new Schema({
+	adults			: [{
+		first		: string,
+		last		: string,
+		email		: string,
+		phone		: string,
+		address		: string,
+		city		: string,
+		state		: string,
+		zip			: string,
+		device		: string,//type: iphone, andriod... not sure if I should make this an enum
+		relationship: {type: string, enum: ['father', 'mother', 'guardian', 'grandpa', 'grandma', 'neighbor', 'friend']}
+	}],
+	kids			: [{
+		first		: string,
+		last		: string,
+		age			: int,
+		birthday	: timestamp,
+		grade		: string,
+		relationship: {type: string, enum ['son', 'daughter', 'foster', 'friend']},//what else goes here?
+		guest		: boolean,
+		alergies	: [string]
 	}]
 });
 /*
